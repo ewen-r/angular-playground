@@ -1,0 +1,34 @@
+<!--
+  © Copyright 2023-2023 E Reynolds, Inc. All rights reserved.
+
+  This program is confidential and proprietary to E Reynolds, and
+    may not be copied, reproduced, modified, disclosed to others, published or used,
+    in whole or in part, without the express prior written permission.
+-->
+
+
+<div class="card text-center">
+
+  <!-- Header -->
+  <div class="card-header">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <img style="height:3rem" alt="Logo" src="../assets/logo.png" />
+        <span class="navbar-brand mb-0 h1">
+          {{ title }}</span>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Content -->
+  <div class="card-body">
+    <h5 class="card-title">Angular router outlet</h5>
+
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Footer -->
+  <div class="card-footer text-body-secondary">
+    Copyright © E Reynolds {{ date }}
+  </div>
+</div>
