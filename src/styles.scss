@@ -29,9 +29,9 @@ $brandLightGreen: #BDE12A;
 $brandPink: #FF008F;
 
 /** Traffic Light colors */
-$brandRed: #EC1C24;     // Error/Alert
-$brandAmber: #FFC012;   // Warning
-$brandGreen: #00B259;   // OK/Normal/Success
+$brandRed: #EC1C24; // Error/Alert
+$brandAmber: #FFC012; // Warning
+$brandGreen: #00B259; // OK/Normal/Success
 
 $standardBorder: 2px solid $brandDarkGrey;
 $lightBorder: 1px solid $brandDarkGrey;
@@ -54,7 +54,6 @@ $standardTextureImage: url("https://www.transparenttextures.com/patterns/rough-c
   box-sizing: border-box;
 }
 
-/* HEADER & FOOTER */
 .card {
   margin: 5px;
   border: $standardBorder;
@@ -67,6 +66,12 @@ $standardTextureImage: url("https://www.transparenttextures.com/patterns/rough-c
   background-image: $standardTextureImage;
   font-family: $standardFontFamily;
   box-shadow: $standardBoxShadow;
+}
+
+// Removes decoration and default blue font color from hyperlinks.
+a.noDecoration {
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-body {

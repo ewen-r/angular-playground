@@ -13,9 +13,10 @@
   <div class="card-header">
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
-        <img style="height:3rem" alt="Logo" src="../assets/logo.png" />
+        <a href="/"><img style="height:3rem" alt="Logo" src="../assets/logo.png" /></a>
         <span class="navbar-brand mb-0 h1">
-          {{ title }}</span>
+          <a class="noDecoration" href="/">
+            {{ title }}</a></span>
       </div>
     </nav>
   </div>
@@ -29,6 +30,7 @@
 
   <!-- Footer -->
   <div class="card-footer text-body-secondary">
-    Copyright © E Reynolds {{ currentYear }}
+    Copyright © E Reynolds
+    {{ currentYear }}
   </div>
 </div>
