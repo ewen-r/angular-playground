@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
   ],
   providers: [],
   bootstrap: [AppComponent]
