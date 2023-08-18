@@ -37,6 +37,23 @@
           }
         }
       }
+    },
+    {
+      "type": "npm",
+      "script": "compodoc",
+      "problemMatcher": [],
+      "label": "npm: compodoc",
+      "detail": "npx compodoc -p tsconfig.json src",
+      "promptOnClose": false,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      }
     }
   ]
 }

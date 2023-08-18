@@ -6,17 +6,20 @@
     in whole or in part, without the express prior written permission.
 */
 
-import { compileFactoryFunction } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 
+/** Main app component. */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /** App title. */
   title = 'angular-playground';
-  date = new Date().getFullYear();
+
+  /** Current year (for copyright purposes). */
+  currentYear = new Date().getFullYear();
 
 }
