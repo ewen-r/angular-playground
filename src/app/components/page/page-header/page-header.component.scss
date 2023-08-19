@@ -6,17 +6,11 @@
     in whole or in part, without the express prior written permission.
 */
 
-@import './scss/brand.scss';
+@import '../../../scss/brand.scss';
 
-
-.card-header,
-.card-footer {
+.navbar {
   background-image: $standardTextureImage;
-  font-family: $standardFontFamily;
   box-shadow: $standardBoxShadow;
+  border: $lightBorder;
+  border-radius: $standardBorderRadius;
 }
-
-.card-body {
-  background-color: $brandPageBackground;
-}
-

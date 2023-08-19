@@ -12,11 +12,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { PageHeaderComponent } from './components/page/page-header/page-header.component';
+import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageHeaderComponent,
+    PageFooterComponent
   ],
   imports: [
     BrowserModule,

@@ -6,19 +6,11 @@
     in whole or in part, without the express prior written permission.
 -->
 
-
 <div class="card text-center">
 
   <!-- Header -->
   <div class="card-header">
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a href="/"><img style="height:3rem" alt="Logo" src="../assets/logo.png" /></a>
-        <span class="navbar-brand mb-0 h1">
-          <a class="noDecoration" href="/">
-            {{ title }}</a></span>
-      </div>
-    </nav>
+    <app-page-header></app-page-header>
   </div>
 
   <!-- Content -->
@@ -29,8 +21,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="card-footer text-body-secondary">
-    Copyright © E Reynolds
-    {{ currentYear }}
+  <div class="card-footer">
+    <app-page-footer></app-page-footer>
   </div>
 </div>

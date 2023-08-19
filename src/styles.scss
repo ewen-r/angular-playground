@@ -7,45 +7,7 @@
 */
 
 // ------------------------------------------------------------------------------
-
-/** Primary design colors */
-$brandBlack: #000000;
-$brandWhite: #ffffff;
-$brandLightBlue: #00ADEF;
-$brandDarkBlue: #0039C1;
-$brandDarkGrey: #333333;
-$brandMidGrey: #6D6E71;
-$brandLightGrey: #CCCCCC;
-$brandPageBackground: #FAFAFA;
-$brandLightBlue30Percent: #b3e7fa;
-
-/** Secondary Design colors (Graphs) */
-$brandIndigo: #272BA7;
-$brandOrange: #ff8000;
-$brandViolet: #6A1499;
-$brandTeal: #00A9B4;
-$brandPlum: #BC1A8C;
-$brandLightGreen: #BDE12A;
-$brandPink: #FF008F;
-
-/** Traffic Light colors */
-$brandRed: #EC1C24; // Error/Alert
-$brandAmber: #FFC012; // Warning
-$brandGreen: #00B259; // OK/Normal/Success
-
-$standardBorder: 2px solid $brandDarkGrey;
-$lightBorder: 1px solid $brandDarkGrey;
-$heavyBorder: 5px solid $brandDarkGrey;
-
-$standardBorderRadius: 0.5rem;
-$lightBorderRadius: 0.2rem;
-$heavyBorderRadius: 1rem;
-
-$standardBoxShadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-$standardFontFamily: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-$standardTextureImage: url("https://www.transparenttextures.com/patterns/rough-cloth-light.png");
-
+@import './app/scss/brand.scss';
 
 // ------------------------------------------------------------------------------
 * {
@@ -55,17 +17,8 @@ $standardTextureImage: url("https://www.transparenttextures.com/patterns/rough-c
 }
 
 .card {
-  margin: 5px;
+  margin: $standardMargin;
   border: $standardBorder;
-}
-
-.card-header,
-.navbar,
-.card-footer {
-  color: $brandWhite;
-  background-image: $standardTextureImage;
-  font-family: $standardFontFamily;
-  box-shadow: $standardBoxShadow;
 }
 
 // Removes decoration and default blue font color from hyperlinks.
@@ -74,12 +27,3 @@ a.noDecoration {
   color: inherit;
 }
 
-.card-body {
-  background-color: $brandPageBackground;
-}
-
-.navbar {
-  border: $lightBorder;
-  border-radius: $standardBorderRadius;
-  box-shadow: $standardBoxShadow;
-}
