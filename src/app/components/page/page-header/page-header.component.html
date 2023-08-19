@@ -5,12 +5,29 @@
     may not be copied, reproduced, modified, disclosed to others, published or used,
     in whole or in part, without the express prior written permission.
 -->
-
-  <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
+<nav class="navbar">
+  <div class="container-fluid">
+    <!-- Header div holding the Logo and app title. -->
+    <div class="navbar-header">
       <a href="/"><img style="height:3rem" alt="Logo" src="../assets/logo.png" /></a>
       <span class="navbar-brand mb-0 h1">
         <a class="noDecoration" href="/">
-          {{ title }}</a></span>
+          {{ title }}</a>
+      </span>
     </div>
-  </nav>
+
+    <!-- Div holding the drop=down menu -->
+    <div class="nav-item dropdown navbar-right">
+      <!-- Drop-down menu button (link). -->
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Menu
+      </a>
+      <!-- Drop-downmenu items. -->
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item disabled" href="#">Action 1.</a></li>
+        <li><a class="dropdown-item disabled" href="#">Action 2.</a></li>
+        <li><a class="dropdown-item disabled" href="#">Action 3.</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
