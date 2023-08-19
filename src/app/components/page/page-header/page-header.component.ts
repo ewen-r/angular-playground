@@ -19,7 +19,7 @@ import { NGXLogger } from 'ngx-logger';
 export class PageHeaderComponent {
 
   /** Name of this component. */
-  readonly COMPONENT = 'PageHeaderComponent';
+  readonly COMPONENT_NAME = 'PageHeaderComponent';
 
   /** App title. */
   title = 'angular-playground';
@@ -28,7 +28,7 @@ export class PageHeaderComponent {
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
   */
   constructor(private logger: NGXLogger) {
-    console.log(`${this.COMPONENT}: constructor():`);
+    console.log(`${this.COMPONENT_NAME}: constructor():`);
   }
 
 

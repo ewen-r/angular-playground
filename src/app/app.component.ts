@@ -19,13 +19,13 @@ import { NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 })
 export class AppComponent implements OnInit {
   /** Name of this component. */
-  readonly COMPONENT = 'AppComponent';
+  readonly COMPONENT_NAME = 'AppComponent';
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
   */
   constructor(private logger: NGXLogger) {
-    console.log(`${this.COMPONENT}: ${environment.version}: constructor():`, environment);
+    console.log(`${this.COMPONENT_NAME}: ${environment.version}: constructor():`, environment);
     this.ConfigureLoggerService();
     this.testLogging();
   }
@@ -34,14 +34,14 @@ export class AppComponent implements OnInit {
   /** Perform ngOnInit for this component.
   */
   ngOnInit(): void {
-    console.log(`${this.COMPONENT}: ngOnInit():`);
+    console.log(`${this.COMPONENT_NAME}: ngOnInit():`);
   }
 
 
   /** Configure logger service.
   */
   private ConfigureLoggerService() {
-    console.log(`${this.COMPONENT}: ConfigureLoggerService():`, environment.loggerConfig);
+    console.log(`${this.COMPONENT_NAME}: ConfigureLoggerService():`, environment.loggerConfig);
 
     const updatedConfig = this.logger.getConfigSnapshot();
 

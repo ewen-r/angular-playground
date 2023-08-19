@@ -19,7 +19,7 @@ import { NGXLogger } from 'ngx-logger';
 export class PageFooterComponent {
 
   /** Name of this component. */
-  readonly COMPONENT = 'PageFooterComponent';
+  readonly COMPONENT_NAME = 'PageFooterComponent';
 
   /** Current year (for copyright purposes). */
   currentYear = new Date().getFullYear();
@@ -28,7 +28,7 @@ export class PageFooterComponent {
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
   */
   constructor(private logger: NGXLogger) {
-    console.log(`${this.COMPONENT}: constructor():`);
+    console.log(`${this.COMPONENT_NAME}: constructor():`);
   }
 
 
