@@ -1,5 +1,12 @@
 {
   "editor.tabSize": 2,
-  "cSpell.words": [
+  "cSpell.words": [],
+  "css.styleSheets": [
+    "/style.css",
+    "style.css",
+    "styles.scss",
+    "/app/scss/brand.scss",
+    "${fileBasenameNoExtension}.css",
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
   ]
 }

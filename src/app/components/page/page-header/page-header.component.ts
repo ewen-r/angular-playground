@@ -6,7 +6,7 @@
     in whole or in part, without the express prior written permission.
 */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 
@@ -16,13 +16,14 @@ import { NGXLogger } from 'ngx-logger';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss']
 })
-export class PageHeaderComponent {
+export class PageHeaderComponent implements OnInit {
 
   /** Name of this component. */
   readonly COMPONENT_NAME = 'PageHeaderComponent';
 
   /** App title. */
   title = 'angular-playground';
+
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
@@ -32,4 +33,9 @@ export class PageHeaderComponent {
   }
 
 
+  /** Perform ngOnInit for this component.
+  */
+  ngOnInit(): void {
+    console.log(`${this.COMPONENT_NAME}: ngOnInit():`);
+  }
 }

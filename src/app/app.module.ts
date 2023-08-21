@@ -14,13 +14,15 @@ import { AppComponent } from './app.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { PageHeaderComponent } from './components/page/page-header/page-header.component';
 import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
+import { QuestionComponent } from './components/question/question.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageHeaderComponent,
-    PageFooterComponent
+    PageFooterComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

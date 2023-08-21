@@ -6,23 +6,25 @@
     in whole or in part, without the express prior written permission.
 */
 
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
+import { Question } from 'src/app/shared/interfaces/interfaces';
 
 
-/** Component to display page footer. */
+/** Component to add/modify a question.
+*/
 @Component({
-  selector: 'app-page-footer',
-  templateUrl: './page-footer.component.html',
-  styleUrls: ['./page-footer.component.scss']
+  selector: 'app-question',
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.scss']
 })
-export class PageFooterComponent implements OnInit {
+export class QuestionComponent implements OnInit {
 
   /** Name of this component. */
-  readonly COMPONENT_NAME = 'PageFooterComponent';
+  readonly COMPONENT_NAME = 'QuestionComponent';
 
-  /** Current year (for copyright purposes). */
-  currentYear = new Date().getFullYear();
+  @Input() question: Question | null = null;
 
 
   /** Class constructor.
@@ -35,7 +37,7 @@ export class PageFooterComponent implements OnInit {
 
   /** Perform ngOnInit for this component.
   */
-  ngOnInit(): void {
+  ngOnInit() {
     console.log(`${this.COMPONENT_NAME}: ngOnInit():`);
   }
 
