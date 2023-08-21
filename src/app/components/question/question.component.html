@@ -41,11 +41,13 @@
         <div *ngSwitchCase="QuestionType.TRUE_FALSE" class="list-group">
           <p style="text-align: left">True or false.</p>
           <label class="list-group-item d-flex gap-2">
-            <input type="radio" class="btn-check" name="trueFalse" id="trueButton" autocomplete="off" checked>
-            <label class="btn btn-outline-success" for="trueButton">TRUE</label>
+            <input type="radio" class="btn-check" [name]="uniquePrefix + 'trueFalse'"
+              [id]="uniquePrefix + '_TrueButton'" autocomplete="off" checked>
+            <label class="btn btn-outline-success" [for]="uniquePrefix + '_TrueButton'">TRUE</label>
 
-            <input type="radio" class="btn-check" name="trueFalse" id="falseButton" autocomplete="off">
-            <label class="btn btn-outline-danger" for="falseButton">FALSE</label>
+            <input type="radio" class="btn-check" [name]="uniquePrefix + 'trueFalse'"
+              [id]="uniquePrefix + '_FalseButton'" autocomplete="off">
+            <label class="btn btn-outline-danger" [for]="uniquePrefix + '_FalseButton'">FALSE</label>
           </label>
         </div>
 
@@ -53,8 +55,8 @@
         <div *ngSwitchCase="QuestionType.MULTIPLE_CHOICE" class="list-group">
           <p style="text-align: left">Choose one.</p>
           <label *ngFor="let o of question?.multiChoiceOptions" class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1"
-              value="o">
+            <input class="form-check-input flex-shrink-0" type="radio" [name]="uniquePrefix + '_listGroupRadios'"
+              [id]="uniquePrefix + '_MultipleChoiceOption'" value="o">
             <span>
               {{ o }}
             </span>
@@ -80,10 +82,10 @@
 
         <!-- Mark my own answer -->
         <div>
-            <span>Please mark your own answer... </span>
-            <button type="button" class="btn btn-sm" (click)="onAnswerButton()"
-             [ngClass]="{'btn-success': userAnswer, 'btn-danger': !userAnswer}">
-              {{ userAnswer ? "CORRECT" : "INCORRECT" }} </button>
+          <span>Please mark your own answer... </span>
+          <button type="button" class="btn btn-sm" (click)="onAnswerButton()"
+            [ngClass]="{'btn-success': userAnswer, 'btn-danger': !userAnswer}">
+            {{ userAnswer ? "CORRECT" : "INCORRECT" }} </button>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import { NGXLogger } from 'ngx-logger';
 import { QuestionType } from 'src/app/shared/interfaces/enums';
 import { Question } from 'src/app/shared/interfaces/interfaces';
 
+let uniqueId: number = 0;
 
 /** Component to add/modify a question.
 */
@@ -24,6 +25,12 @@ export class QuestionComponent implements OnInit {
 
   /** Name of this component. */
   readonly COMPONENT_NAME = 'QuestionComponent';
+
+  /** Unique prefix for ID and name of HTML Elements in this component.
+    * This prevents unwanted side effects when there are clashes.
+    * e.g when the component is included more than one time on the page.
+    * */
+  uniquePrefix = `${this.COMPONENT_NAME}_${uniqueId++}`;
 
   /** Index number of this question. */
   @Input() index: number | null = null;
