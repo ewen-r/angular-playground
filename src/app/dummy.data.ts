@@ -17,8 +17,8 @@ const originator1: OriginatorInfo = {
   modifyDate: ''
 };
 
-const question1: Question = {
-  uuid: 'question-001',
+const questionTF01: Question = {
+  uuid: 'questionTF01',
   originatorInfo: originator1,
   topic: 'sport',
   questionType: QuestionType.TRUE_FALSE,
@@ -33,34 +33,41 @@ const question1: Question = {
   }
 };
 
-const question2: Question = {
-  uuid: 'question-002',
+const questionTF02: Question = {
+  uuid: 'questionTF02',
   originatorInfo: originator1,
-  topic: 'history',
-  questionType: QuestionType.TEXT,
-  difficulty: Difficulty.MEDIUM,
-  statement: 'Who was British Prime Minister during the Falklands war?',
-  answer: {
-    match: 'Margaret Thatcher',
-    statement: ''
-  }
-};
-
-const question3: Question = {
-  uuid: 'question-003',
-  originatorInfo: originator1,
-  topic: 'Movies',
-  questionType: QuestionType.TEXT,
+  topic: 'general knowledge',
+  questionType: QuestionType.TRUE_FALSE,
   difficulty: Difficulty.EASY,
-  statement: 'Which 1982 film was greatly accepted by film fans for its portrayal of the love between a young, fatherless suburban boy and a lost, benevolent and homesick visitor from another planet?',
+  statement: 'True or false.. The sky is purple with green spots?',
+  multiChoiceOptions: [
+    'true', 'false'
+  ],
   answer: {
-    match: 'E.T The Extra-Terrestrial',
-    statement: ''
+    match: false,
+    statement: 'Of course it isn\'t.'
   }
 };
 
-const question4: Question = {
-  uuid: 'question-004',
+const questionTF03: Question = {
+  uuid: 'questionTF02',
+  originatorInfo: originator1,
+  topic: 'general knowledge',
+  questionType: QuestionType.TRUE_FALSE,
+  difficulty: Difficulty.EASY,
+  statement: 'True or false.. I am amazing?',
+  multiChoiceOptions: [
+    'true', 'false'
+  ],
+  answer: {
+    match: true,
+    statement: '.. and also extremely modest.'
+  }
+};
+
+
+const questionMultipleChoice01: Question = {
+  uuid: 'questionMultipleChoice01',
   originatorInfo: originator1,
   topic: 'Science',
   questionType: QuestionType.MULTIPLE_CHOICE,
@@ -75,8 +82,8 @@ const question4: Question = {
   }
 };
 
-const question5: Question = {
-  uuid: 'question-005',
+const questionMultipleChoice02: Question = {
+  uuid: 'questionMultipleChoice02',
   originatorInfo: originator1,
   topic: 'Science',
   questionType: QuestionType.MULTIPLE_CHOICE,
@@ -91,6 +98,51 @@ const question5: Question = {
   }
 };
 
+
+const questionMultipleChoice03: Question = {
+  uuid: 'questionMultipleChoice03',
+  originatorInfo: originator1,
+  topic: 'History',
+  questionType: QuestionType.MULTIPLE_CHOICE,
+  difficulty: Difficulty.MEDIUM,
+  statement: 'Which year was the beginning of the Frech revolution?',
+  multiChoiceOptions: [
+    '1689', '1789', '1889'
+  ],
+  answer: {
+    match: '1789',
+    statement: ''
+  }
+};
+
+
+const questionText01: Question = {
+  uuid: 'questionText01',
+  originatorInfo: originator1,
+  topic: 'history',
+  questionType: QuestionType.TEXT,
+  difficulty: Difficulty.MEDIUM,
+  statement: 'Who was British Prime Minister during the Falklands war?',
+  answer: {
+    match: 'Margaret Thatcher',
+    statement: ''
+  }
+};
+
+const questionText02: Question = {
+  uuid: 'questionText02',
+  originatorInfo: originator1,
+  topic: 'Movies',
+  questionType: QuestionType.TEXT,
+  difficulty: Difficulty.EASY,
+  statement: 'Which 1982 film was greatly accepted by film fans for its portrayal of the love between a young, fatherless suburban boy and a lost, benevolent and homesick visitor from another planet?',
+  answer: {
+    match: 'E.T The Extra-Terrestrial',
+    statement: ''
+  }
+};
+
+
 export const dummyQuiz: Quiz = {
   uuid: 'quiz-1234',
   title: 'DummyQuiz1234',
@@ -98,11 +150,15 @@ export const dummyQuiz: Quiz = {
   tags: ['general knowledge', 'sport', 'history'],
   difficulty: Difficulty.MEDIUM,
   questions: [
-    question1,
-    question2,
-    question3,
-    question4,
-    question5
+    questionTF01,
+    questionTF02,
+    questionTF03,
+    questionMultipleChoice01,
+    questionMultipleChoice02,
+    questionMultipleChoice03,
+    questionText01,
+    questionText02
   ],
   questionTypes: [QuestionType.TEXT]
 };
+
