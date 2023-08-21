@@ -15,6 +15,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { PageHeaderComponent } from './components/page/page-header/page-header.component';
 import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 import { QuestionComponent } from './components/question/question.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { QuestionComponent } from './components/question/question.component';
     AppComponent,
     PageHeaderComponent,
     PageFooterComponent,
-    QuestionComponent
+    QuestionComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

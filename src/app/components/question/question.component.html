@@ -6,7 +6,91 @@
     in whole or in part, without the express prior written permission.
 -->
 
+<div class="card text-center">
 
-<h4> {{ COMPONENT_NAME }} </h4>
-Question = {{ question }}
+  <!-- Header -->
+  <div class="card-header">
+    <h4> Question {{ index }}
+      <span *ngIf="question?.difficulty">
+        ( {{ question?.difficulty }} )
+      </span>
 
+      <container-element [ngSwitch]="userAnswer">
+        <span *ngSwitchCase="null"></span>
+        <span *ngSwitchCase="true">😀</span>
+        <span *ngSwitchCase="false">🙃</span>
+      </container-element>
+    </h4>
+    <p class="">
+      {{ question?.statement || 'feeb' }}
+    </p>
+  </div>
+
+  <!-- Question =
+  {{ question | json }} -->
+
+  <!-- Body -->
+  <div class="card-body">
+
+    <!-- User answer div. -->
+    <div>
+      <!-- Depending on type of question... -->
+      <container-element [ngSwitch]="question?.questionType">
+
+        <!-- If true/false question. -->
+        <div *ngSwitchCase="QuestionType.TRUE_FALSE" class="list-group">
+          <p style="text-align: left">True or false.</p>
+          <label class="list-group-item d-flex gap-2">
+            <input type="radio" class="btn-check" name="trueFalse" id="trueButton" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="trueButton">TRUE</label>
+
+            <input type="radio" class="btn-check" name="trueFalse" id="falseButton" autocomplete="off">
+            <label class="btn btn-outline-danger" for="falseButton">FALSE</label>
+          </label>
+        </div>
+
+        <!-- If multiple choice Question. -->
+        <div *ngSwitchCase="QuestionType.MULTIPLE_CHOICE" class="list-group">
+          <p style="text-align: left">Choose one.</p>
+          <label *ngFor="let o of question?.multiChoiceOptions" class="list-group-item d-flex gap-2">
+            <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1"
+              value="o">
+            <span>
+              {{ o }}
+            </span>
+          </label>
+        </div>
+
+      </container-element>
+    </div>
+
+    <!-- Results div-->
+    <div class="row align-items-start">
+      <!-- Show/hide answer button -->
+      <div class="col align-items-start">
+        <button class="btn btn-sm" type="button" (click)="showAnswer = !showAnswer"
+          [ngClass]="{'btn-warning': showAnswer, 'btn-outline-warning': !showAnswer}">
+          {{ showAnswer ? "Hide Answer" : "Show Answer" }}
+        </button>
+      </div>
+
+      <!-- Answer div -->
+      <div class="answerDiv" *ngIf="showAnswer">
+        {{ displayAnswer }}
+
+        <!-- Mark my own answer -->
+        <div>
+            <span>Please mark your own answer... </span>
+            <button type="button" class="btn btn-sm" (click)="onAnswerButton()"
+             [ngClass]="{'btn-success': userAnswer, 'btn-danger': !userAnswer}">
+              {{ userAnswer ? "CORRECT" : "INCORRECT" }} </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="card-footer">
+  </div>
+
+</div>

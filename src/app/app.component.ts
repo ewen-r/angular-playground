@@ -9,6 +9,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { NGXLogger, NgxLoggerLevel } from 'ngx-logger';
+import { dummyQuiz } from './dummy.data';
 
 
 /** Main app component. */
@@ -21,27 +22,32 @@ export class AppComponent implements OnInit {
   /** Name of this component. */
   readonly COMPONENT_NAME = 'AppComponent';
 
+  /** Dev only dummy quiz data.
+    * @ignore
+  */
+  readonly quiz = dummyQuiz;
+
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
   */
-  constructor(private logger: NGXLogger) {
-    console.log(`${this.COMPONENT_NAME}: ${environment.version}: constructor():`, environment);
+  constructor(
+    private logger: NGXLogger) {
+    this.logger.log(`${this.COMPONENT_NAME}: ${environment.version}: constructor():`, environment);
     this.ConfigureLoggerService();
-    this.testLogging();
   }
 
 
   /** Perform ngOnInit for this component.
   */
-  ngOnInit(): void {
-    console.log(`${this.COMPONENT_NAME}: ngOnInit():`);
+  ngOnInit() {
+    this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`);
   }
 
 
   /** Configure logger service.
   */
   private ConfigureLoggerService() {
-    console.log(`${this.COMPONENT_NAME}: ConfigureLoggerService():`, environment.loggerConfig);
+    this.logger.log(`${this.COMPONENT_NAME}: ConfigureLoggerService():`, environment.loggerConfig);
 
     const updatedConfig = this.logger.getConfigSnapshot();
 

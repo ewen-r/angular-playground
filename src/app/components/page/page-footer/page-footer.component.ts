@@ -29,14 +29,14 @@ export class PageFooterComponent implements OnInit {
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
   */
   constructor(private logger: NGXLogger) {
-    console.log(`${this.COMPONENT_NAME}: constructor():`);
+    this.logger.log(`${this.COMPONENT_NAME}: constructor():`);
   }
 
 
   /** Perform ngOnInit for this component.
   */
   ngOnInit(): void {
-    console.log(`${this.COMPONENT_NAME}: ngOnInit():`);
+    this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`);
   }
 
 }

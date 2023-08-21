@@ -5,27 +5,30 @@
     may not be copied, reproduced, modified, disclosed to others, published or used,
     in whole or in part, without the express prior written permission.
 -->
-
 <div class="card text-center">
 
   <!-- Header -->
   <div class="card-header">
-    <app-page-header></app-page-header>
+    <h1>
+      {{ pageTitle }}
+    </h1>
+    <h3> {{ pageSubtitle }}</h3>
   </div>
 
-  <!-- Content -->
-  <div class="card-body">
-    <h5 class="card-title">Angular router outlet</h5>
+  <!-- Quiz =
+  {{ quiz | json }} -->
 
-    <router-outlet></router-outlet>
-
-    <!-- Temporary whilst in dev.. Haven't yet decided on routes etc. -->
-    <app-quiz [quiz]="quiz"></app-quiz>
-
+  <div *ngIf="showMetadata">
+    {{ metadata }}
   </div>
 
-  <!-- Footer -->
-  <div class="card-footer">
-    <app-page-footer></app-page-footer>
+  <div>
+    Your score = {{numCorrect}} / {{ quiz?.questions?.length }}
   </div>
+
+  <div *ngFor="let question of quiz?.questions; index as i">
+    <app-question [index]="i +1" [question]="question" (result)="onResult($event, i)">
+    </app-question>
+  </div>
+
 </div>

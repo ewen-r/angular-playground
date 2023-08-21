@@ -30,8 +30,22 @@ export interface Media {
   type: MediaType;
   /** URI locator for this item. */
   uri: string;
+  /** Origin information for this item. */
   originatorInfo: OriginatorInfo;
 };
+
+
+/** Defines the interface for a question's answer.
+  * string - General text based answer (also if multiple-choice type).
+  * boolean - If question is true/false type.
+  * undefined - User needs to self-verify their answer. */
+export interface Answer {
+  /** The exact match required for the answer.
+    * if undefined then the user can verify their own answer. */
+  match: string | boolean | undefined;
+  /** An optional statement supporting the answer. */
+  statement: string;
+}
 
 
 /** Defines the interface for a question object. */
@@ -42,8 +56,6 @@ export interface Question {
   originatorInfo: OriginatorInfo;
   /** Question topic. */
   topic: string;
-  /** Tags for this question... e.g "sport", "history", "geography", "general knowledge" */
-  tags: string[];
   /** Type of question. */
   questionType: QuestionType;
   /** Difficulty of this question. */
@@ -52,14 +64,24 @@ export interface Question {
   statement: string;
   /** OPTIONAL: Any media file associated with this question. */
   media?: Media;
-  /** Answer for this question.
-    * string - General text based answer (also if multiple-choice type).
-    * boolean - If question is true/false type.
-    * undefined - User needs to self-verify their answer. */
-  answer?: string | boolean;
+  /** The answer to this question. */
+  answer: Answer;
   /** Any multiple choice options. */
   multiChoiceOptions?: string[];
 };
+
+
+/** Defines the interface for a High score. */
+export interface HighScore {
+  /** User uuid */
+  userId?: string;
+  /** User name */
+  username: string;
+  /** Score @TODO_EWEN is this a percentage or number of correct answers? */
+  score: string;
+  /** Date this score was achieved. */
+  date: string;
+}
 
 
 /** Defines the interface for a quiz object. */
@@ -70,22 +92,15 @@ export interface Quiz {
   title: string;
   /** Origin information for this quiz. */
   originatorInfo: OriginatorInfo;
-    /** Tags for this quiz... e.g "sport", "history", "geography", "general knowledge" */
+  /** Tags for this quiz... e.g "sport", "history", "geography", "general knowledge" */
   tags: string[];
   /** Difficulty of the quiz. */
   difficulty: Difficulty;
   /** List of questions in this quiz. */
   questions: Question[];
-  /** List of topics covered in this quiz. */
-  topics: string[];
   /** Types of question in this quiz. */
   questionTypes: QuestionType[];
+  /** High score data for this quiz. */
+  highScore?: HighScore
 };
 
-
-export interface HighScore {
-  userId?: string;
-  username: string;
-  score: string;
-  date: string;
-}
