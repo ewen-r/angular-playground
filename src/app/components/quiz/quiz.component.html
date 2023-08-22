@@ -12,18 +12,19 @@
     <h1>
       {{ pageTitle }}
     </h1>
-    <h3> {{ pageSubtitle }}</h3>
+    <h6> {{ pageSubtitle }}</h6>
+
+    <div *ngIf="showMetadata" class="metadataDiv">
+      {{ metadata }}
+    </div>
   </div>
 
   <!-- Quiz =
   {{ quiz | json }} -->
 
-  <div *ngIf="showMetadata">
-    {{ metadata }}
-  </div>
 
-  <div>
-    Your score = {{numCorrect}} / {{ quiz?.questions?.length }}
+  <div class="scoreDiv">
+    Current score = {{numCorrect}} / {{ quiz?.questions?.length }}
   </div>
 
   <!-- Question carousel -->

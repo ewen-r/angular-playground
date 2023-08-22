@@ -67,7 +67,10 @@ export class QuizComponent {
       this.pageTitle = this.quiz?.title;
 
       // Set page sub-title.
-      this.pageSubtitle = `by ${this.quiz.originatorInfo.username}`;
+      this.pageSubtitle = `${this.quiz.originatorInfo.username}`;
+      this.pageSubtitle += this.quiz.originatorInfo?.createDate
+        ? ` (${this.quiz.originatorInfo?.createDate})`
+        : '';
 
       // Create metadata.
       this.metadata += this.quiz?.difficulty
@@ -75,12 +78,6 @@ export class QuizComponent {
         : '';
       this.metadata += this.quiz?.difficulty
         ? `Difficulty: ${this.quiz?.difficulty}.  `
-        : '';
-      this.metadata += this.quiz.originatorInfo?.username
-        ? `Created by: ${this.quiz.originatorInfo?.username}`
-        : '';
-      this.metadata += this.quiz.originatorInfo?.createDate
-        ? ` ${this.quiz.originatorInfo?.createDate}`
         : '';
     }
   }
