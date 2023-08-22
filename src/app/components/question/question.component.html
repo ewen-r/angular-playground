@@ -49,9 +49,9 @@
 
         <!-- If multiple choice Question. -->
         <div *ngSwitchCase="QuestionType.MULTIPLE_CHOICE" class="list-group">
-          <label *ngFor="let option of question?.multiChoiceOptions" class="list-group-item d-flex gap-2">
+          <label *ngFor="let option of question?.multiChoiceOptions; let i = index" class="list-group-item d-flex gap-2">
             <input class="form-check-input flex-shrink-0" type="radio" [name]="uniquePrefix + '_listGroupRadios'"
-              [id]="uniquePrefix + '_MultipleChoiceOption'" value="option">
+              [id]="uniquePrefix + '_MultipleChoiceOption_' + i" value="option">
             <span>
               {{ option }}
             </span>
