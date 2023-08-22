@@ -13,7 +13,7 @@ import { Quiz, Question, OriginatorInfo } from './shared/interfaces/interfaces';
 
 const originator1: OriginatorInfo = {
   username: 'Ewen Reynolds',
-  createDate: '1-1-2023',
+  createDate: '22-Aug-2023',
   modifyDate: ''
 };
 
@@ -105,7 +105,7 @@ const questionMultipleChoice03: Question = {
   topic: 'History',
   questionType: QuestionType.MULTIPLE_CHOICE,
   difficulty: Difficulty.MEDIUM,
-  statement: 'Which year was the beginning of the Frech revolution?',
+  statement: 'Which year marked the beginning of the Frech revolution?',
   multiChoiceOptions: [
     '1689', '1789', '1889'
   ],
@@ -135,7 +135,7 @@ const questionText02: Question = {
   topic: 'Movies',
   questionType: QuestionType.TEXT,
   difficulty: Difficulty.EASY,
-  statement: 'Which 1982 film was greatly accepted by film fans for its portrayal of the love between a young, fatherless suburban boy and a lost, benevolent and homesick visitor from another planet?',
+  statement: 'Which 1982 film was greatly accepted for its portrayal of the love between a young, fatherless suburban boy and a lost, benevolent and homesick visitor from another planet?',
   answer: {
     match: 'E.T The Extra-Terrestrial',
     statement: ''
@@ -145,7 +145,7 @@ const questionText02: Question = {
 
 export const dummyQuiz: Quiz = {
   uuid: 'quiz-1234',
-  title: 'DummyQuiz1234',
+  title: 'Dummy Quiz 1234',
   originatorInfo: originator1,
   tags: ['general knowledge', 'sport', 'history'],
   difficulty: Difficulty.MEDIUM,
