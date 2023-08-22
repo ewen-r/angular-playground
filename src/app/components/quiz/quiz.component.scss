@@ -8,3 +8,35 @@
 
 @import '../../scss/brand.scss';
 
+
+// Carousel items
+.carousel-item {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+// Carousel buttons
+.carousel-control-prev,
+.carousel-control-next {
+  margin-top: 5px;
+  width: 40px;
+  background: $brandOrange;
+  opacity: 1;
+  border-top: $standardBorder;
+}
+
+// Carousel previous button
+.carousel-control-prev {
+  border-right: $standardBorder;
+  border-top-right-radius: $standardBorderRadius;
+  border-bottom-left-radius: $lightBorderRadius;
+}
+
+// Carousel next button
+.carousel-control-next {
+  border-left: $standardBorder;
+  border-top-left-radius: $standardBorderRadius;
+  border-bottom-right-radius: $lightBorderRadius;
+}
+
