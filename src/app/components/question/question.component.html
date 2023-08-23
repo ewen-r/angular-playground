@@ -14,78 +14,55 @@
       <span *ngIf="question?.difficulty">
         ( {{ question?.difficulty }} )
       </span>
-
-      <container-element [ngSwitch]="userAnswer">
-        <span *ngSwitchCase="null"></span>
-        <span *ngSwitchCase="true">😀</span>
-        <span *ngSwitchCase="false">🙃</span>
-      </container-element>
     </h4>
-    <p class="">
-      {{ question?.statement || 'feeb' }}
-    </p>
+
+    <p> {{ question?.statement || '' }} </p>
   </div>
 
   <!-- Body -->
   <div class="card-body">
+    <form #myMultipleChoiceForm="ngForm"
+      (submit)="onSubmit(myMultipleChoiceForm.value[uniquePrefix + '_listGroupRadios'])" novalidate>
 
-    <!-- userAnswerDiv -->
-    <div class="userAnswerDiv">
-      <!-- Depending on type of question... -->
-      <container-element [ngSwitch]="question?.questionType">
+      <!-- Display div as a row -->
+      <div class="row">
 
-        <!-- If true/false question. -->
-        <div *ngSwitchCase="QuestionType.TRUE_FALSE" class="list-group">
-          <label class="list-group-item d-flex gap-2">
-            <input type="radio" class="btn-check" [name]="uniquePrefix + 'trueFalse'"
-              [id]="uniquePrefix + '_TrueButton'" autocomplete="off" checked>
-            <label class="btn btn-outline-success" [for]="uniquePrefix + '_TrueButton'">TRUE</label>
-
-            <input type="radio" class="btn-check" [name]="uniquePrefix + 'trueFalse'"
-              [id]="uniquePrefix + '_FalseButton'" autocomplete="off">
-            <label class="btn btn-outline-danger" [for]="uniquePrefix + '_FalseButton'">FALSE</label>
-          </label>
+        <!-- userAnswerDiv -->
+        <div class="col col-md-auto align-items-start userAnswerDiv">
+          <div class="list-group">
+            <label *ngFor="let option of question?.multiChoiceOptions; let i = index"
+              class="list-group-item d-flex gap-2">
+              <input ngModel type="radio" class="form-check-input flex-shrink-0"
+                [name]="uniquePrefix + '_listGroupRadios'" [id]="uniquePrefix + '_MultipleChoiceOption_' + i"
+                [value]="option" [disabled]="answerSubmitted">
+              <span> {{ option }} </span>
+            </label>
+          </div>
         </div>
 
-        <!-- If multiple choice Question. -->
-        <div *ngSwitchCase="QuestionType.MULTIPLE_CHOICE" class="list-group">
-          <label *ngFor="let option of question?.multiChoiceOptions; let i = index" class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="radio" [name]="uniquePrefix + '_listGroupRadios'"
-              [id]="uniquePrefix + '_MultipleChoiceOption_' + i" value="option">
-            <span>
-              {{ option }}
-            </span>
-          </label>
+        <!-- revealButtonDiv -->
+        <div *ngIf="!answerSubmitted" class="col-md-auto align-items-start align-top revealButtonDiv">
+          <button type="submit" [disabled]="answerSubmitted || myMultipleChoiceForm.form.pristine"
+            class="btn btn-sm btn-warning">
+            Reveal answer
+          </button>
         </div>
 
-        <!-- If text based Question. -->
-        <!-- @TODO_EWEN Add an input text area here. -->
+        <!-- answerDiv -->
+        <div class="col text-start answerDiv">
+          <div class="align-items-start align-top" *ngIf="answerSubmitted">
+            <p [ngClass]="{'answerCorrect': answerSubmittedResult, 'answerIncorrect': !answerSubmittedResult}">
+              {{ answerSubmittedResult ? "CORRECT 😀" : "INCORRECT 🙃" }} </p>
 
-      </container-element>
-    </div>
+            <p> {{ correctAnswerMessage }} </p>
+            <p> {{ question?.answer?.statement || '' }} </p>
+          </div>
+        </div>
 
-    <!-- answerButtonDiv -->
-    <div class="col align-items-start answerButtonDiv">
-      <button class="btn btn-sm" type="button" (click)="showAnswer = !showAnswer"
-        [ngClass]="{'btn-warning': showAnswer, 'btn-outline-warning': !showAnswer}">
-        {{ showAnswer ? "Hide Answer" : "Show Answer" }}
-      </button>
-    </div>
-
-    <!-- answerDiv -->
-    <div class="row align-items-start answerDiv" *ngIf="showAnswer">
-      <p>{{ displayAnswer }}</p>
-    </div>
-
-    <!-- markAnswerDiv -->
-    <div class="markAnswerDiv">
-      <span>Please mark your own answer... </span>
-      <button type="button" class="btn btn-sm" (click)="onAnswerButton()"
-        [ngClass]="{'btn-success': userAnswer, 'btn-danger': !userAnswer}">
-        {{ userAnswer ? "CORRECT" : "INCORRECT" }} </button>
-    </div>
-
+      </div>
+    </form>
   </div>
+
 
   <!-- Footer -->
   <div class="card-footer">
