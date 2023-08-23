@@ -16,6 +16,7 @@ import { PageHeaderComponent } from './components/page/page-header/page-header.c
 import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 import { QuestionComponent } from './components/question/question.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
   ],
   providers: [],
