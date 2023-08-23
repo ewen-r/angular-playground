@@ -28,7 +28,7 @@ const questionTF01: Question = {
     'true', 'false'
   ],
   answer: {
-    match: true,
+    match: 'true',
     statement: 'He is one of England\'s most successful golfers.'
   }
 };
@@ -44,8 +44,8 @@ const questionTF02: Question = {
     'true', 'false'
   ],
   answer: {
-    match: false,
-    statement: 'Of course it isn\'t.'
+    match: 'false',
+    statement: 'Of course it isn\'t... everyone knows it\'s green STRIPES 😆'
   }
 };
 
@@ -60,7 +60,7 @@ const questionTF03: Question = {
     'true', 'false'
   ],
   answer: {
-    match: true,
+    match: 'true',
     statement: '.. and also extremely modest.'
   }
 };
@@ -78,7 +78,7 @@ const questionMultipleChoice01: Question = {
   ],
   answer: {
     match: 'Aluminium',
-    statement: 'It was discovered in 1825'
+    statement: 'It was discovered in 1825.'
   }
 };
 
@@ -87,7 +87,7 @@ const questionMultipleChoice02: Question = {
   originatorInfo: originator1,
   topic: 'Science',
   questionType: QuestionType.MULTIPLE_CHOICE,
-  difficulty: Difficulty.MEDIUM,
+  difficulty: Difficulty.DIFFICULT,
   statement: 'Which year was the first Tonka truck made?',
   multiChoiceOptions: [
     '1945', '1947', '1949'
@@ -116,36 +116,42 @@ const questionMultipleChoice03: Question = {
 };
 
 
-const questionText01: Question = {
-  uuid: 'questionText01',
+const questionMultipleChoice04: Question = {
+  uuid: 'questionMultipleChoice04',
   originatorInfo: originator1,
   topic: 'history',
-  questionType: QuestionType.TEXT,
-  difficulty: Difficulty.MEDIUM,
+  questionType: QuestionType.MULTIPLE_CHOICE,
+  difficulty: Difficulty.EASY,
   statement: 'Who was British Prime Minister during the Falklands war?',
   answer: {
     match: 'Margaret Thatcher',
     statement: ''
-  }
+  },
+  multiChoiceOptions: [
+    'Tony Blair', 'Margaret Thatcher', 'Gordon Brown'
+  ]
 };
 
-const questionText02: Question = {
-  uuid: 'questionText02',
+const questionMultipleChoice05: Question = {
+  uuid: 'questionMultipleChoice05',
   originatorInfo: originator1,
   topic: 'Movies',
-  questionType: QuestionType.TEXT,
+  questionType: QuestionType.MULTIPLE_CHOICE,
   difficulty: Difficulty.EASY,
   statement: 'Which 1982 film was greatly accepted for its portrayal of the love between a young, fatherless suburban boy and a lost, benevolent and homesick visitor from another planet?',
   answer: {
-    match: 'E.T The Extra-Terrestrial',
+    match: 'E. T. The Extra-Terrestrial',
     statement: ''
-  }
+  },
+  multiChoiceOptions: [
+    'E. T. The Extra-Terrestrial', 'Rocky', 'The Wizard of Oz', 'Predator'
+  ]
 };
 
 
 export const dummyQuiz: Quiz = {
   uuid: 'quiz-1234',
-  title: 'Dummy Quiz 1234',
+  title: 'General Knowledge Quiz 1234',
   originatorInfo: originator1,
   tags: ['general knowledge', 'sport', 'history'],
   difficulty: Difficulty.MEDIUM,
@@ -156,9 +162,9 @@ export const dummyQuiz: Quiz = {
     questionMultipleChoice01,
     questionMultipleChoice02,
     questionMultipleChoice03,
-    questionText01,
-    questionText02
+    questionMultipleChoice04,
+    questionMultipleChoice05
   ],
-  questionTypes: [QuestionType.TEXT]
+  questionTypes: [QuestionType.TRUE_FALSE, QuestionType.MULTIPLE_CHOICE]
 };
 
