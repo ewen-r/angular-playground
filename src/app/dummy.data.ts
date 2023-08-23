@@ -45,7 +45,7 @@ const questionTF02: Question = {
   ],
   answer: {
     match: 'false',
-    statement: 'Of course it isn\'t... everyone knows it\'s green STRIPES 😆'
+    statement: 'Of course it isn\'t... everyone knows it\'s purple with YELLOW spots 😆'
   }
 };
 
