@@ -12,11 +12,7 @@
 /** Question/Quiz type. */
 export enum QuestionType {
   TRUE_FALSE = 'True or False',
-  MULTIPLE_CHOICE = 'Multiple Choice',
-  IMAGE = 'Image',
-  VIDEO = 'Video',
-  AUDIO = 'Audio',
-  TEXT = 'Text'
+  MULTIPLE_CHOICE = 'Multiple Choice'
 };
 
 
