@@ -8,7 +8,6 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
@@ -18,6 +17,15 @@ import { QuestionComponent } from './components/question/question.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home/home.component';
+
+/** Routes. */
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'quiz', component: HomeComponent },
+  { path: 'quiz/:id', component: QuizComponent }
+];
 
 
 @NgModule({
@@ -26,13 +34,15 @@ import { QuizService } from './shared/services/quiz-service/quiz.service';
     PageHeaderComponent,
     PageFooterComponent,
     QuestionComponent,
-    QuizComponent
+    QuizComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
+    LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL }),
+    RouterModule.forRoot(routes)
   ],
   providers: [
     QuizService
