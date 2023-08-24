@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /*
   © Copyright 2023-2023 E Reynolds, Inc. All rights reserved.
 
