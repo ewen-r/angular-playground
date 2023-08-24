@@ -33,17 +33,22 @@ export class QuizComponent {
   pageSubtitle = '';
 
   /** User's results for each question. */
-  userAnswers: boolean[] = [];
+  userAnswers: string[] = [];
 
-  /** Number of correct answers. */
-  numCorrect: number = 0;
+  numQuestions: number = 0;
 
-  /** If true, shows metadata about the quiz.. creator, date created etc.. */
+  correctMsg: string = '0 (0%)';
+  incorrectMessage: string = '0 (0%)';
+  passedMessage: string = '0 (0%)';
+
+  /** If true, shows summaryMessage about the quiz.. creator, date created etc.. */
   showMetadata = true;
 
-  /** Metadata about this quiz. */
-  metadata = '';
+  /** Summary of this quiz. */
+  summaryMessage = '';
 
+  /** High score message for this quiz. */
+  highScoreMessage: string = 'No scores submitted';
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
@@ -54,15 +59,19 @@ export class QuizComponent {
 
 
   /** Perform ngOnInit for this component.
+    * - Calculate number of questions.
     * - Set page title.
     * - Set page sub-title.
-
-    * - Create metadata.
+    * - Create summaryMessage.
+    * - Initialize user answers array.
   */
   ngOnInit() {
     this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`);
 
-    if (this.quiz) {
+    // Calculate number of questions.
+    this.numQuestions = this.quiz?.questions?.length ?? 0;
+
+    if (this.quiz && this.numQuestions) {
       // Set page title.
       this.pageTitle = this.quiz?.title;
 
@@ -72,26 +81,57 @@ export class QuizComponent {
         ? ` (${this.quiz.originatorInfo?.createDate})`
         : '';
 
-      // Create metadata.
-      this.metadata += this.quiz?.difficulty
-        ? `${this.quiz?.questions?.length} questions.  `
+      // Create summaryMessage.
+      this.summaryMessage += this.quiz?.difficulty
+        ? `${this.numQuestions} questions.  `
         : '';
-      this.metadata += this.quiz?.difficulty
-        ? `Difficulty: ${this.quiz?.difficulty}.  `
+      this.summaryMessage += this.quiz?.difficulty
+        ? ` ${this.quiz?.difficulty} difficulty.  `
         : '';
+
+      // Initialize user answers array.
+      this.userAnswers = new Array(this.numQuestions);
+      this.userAnswers.fill('pass');
+      this.passedMessage = `${this.numQuestions} (100%)`;
     }
   }
 
 
   /** Handle result emitted from a question component.
+    * - Store incoming answer in userAnswers array.
+    * - Update user stats.
+    * - Update on-screen messages.
     * @param {boolean} isCorrectAnswer True if user answered question correctly.
     * @param {number} index Index of question.
   */
   onResult(isCorrectAnswer: boolean, index: number) {
     this.logger.debug(`${this.COMPONENT_NAME}: onResult():`, index, isCorrectAnswer);
-    this.userAnswers[index] = isCorrectAnswer;
 
-    this.numCorrect = this.userAnswers.filter(a => a).length;
+    // Store incoming answer in userAnswers array.
+    this.userAnswers[index] = isCorrectAnswer ? 'correct' : 'incorrect';
+
+    // Update user stats.
+    const numCorrect: number = this.userAnswers.filter(
+      a => a === 'correct').length;
+    const numIncorrect: number = this.userAnswers.filter(
+      a => a === 'incorrect').length;
+    const numPassed: number = this.userAnswers.filter(
+      a => a === 'pass').length;
+
+    // Update on-screen messages.
+    this.correctMsg = `${numCorrect} (
+      ${String(
+      Math.floor(100 * numCorrect / (this.numQuestions)))
+      }%)`;
+    this.incorrectMessage = `${numIncorrect} (
+      ${String(
+      Math.floor(100 * numIncorrect / (this.numQuestions)))
+      }%)`;
+    this.passedMessage = `${numPassed} (
+      ${String(
+      Math.floor(100 * numPassed / (this.numQuestions)))
+      }%)`;
+
   }
 
 

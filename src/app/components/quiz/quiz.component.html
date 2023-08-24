@@ -14,9 +14,6 @@
     </h1>
     <h6> {{ pageSubtitle }}</h6>
 
-    <div *ngIf="showMetadata" class="metadataDiv">
-      {{ metadata }}
-    </div>
   </div>
 
   <!-- Quiz =
@@ -24,17 +21,65 @@
 
 
   <div class="scoreDiv">
-    Current score = {{numCorrect}} / {{ quiz?.questions?.length }}
+    Current score = {{ correctMsg }}
   </div>
 
   <!-- Question carousel -->
   <div id="carouselExampleIndicators" class="carousel carousel-slide">
+
+
     <div class="carousel-inner">
-      <!-- Carousel items -->
-      <div class="carousel-item" *ngFor="let question of quiz?.questions; index as i" [ngClass]="{'active': !i}">
+
+      <!-- First carousel item -->
+      <div class="active carousel-item">
+        <div class="card text-center">
+          <!-- Header -->
+          <div class="card-header">
+            <h4> {{ summaryMessage }}</h4>
+            <p> {{ highScoreMessage }} </p>
+          </div>
+
+          <!-- Body -->
+          <div class="card-body">
+            <p>Good Luck!</p>
+          </div>
+
+          <!-- Footer -->
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel items (questions) -->
+      <div class="carousel-item" *ngFor="let question of quiz?.questions; index as i">
+
         <app-question [index]="i +1" [question]="question" (result)="onResult($event, i)">
         </app-question>
+
       </div>
+
+      <!-- Final carousel item -->
+      <div class="carousel-item">
+        <div class="card text-center">
+          <!-- Header -->
+          <div class="card-header">
+            <h4> Results </h4>
+          </div>
+
+          <!-- Body -->
+          <div class="card-body">
+            <p> Correct = {{correctMsg}}</p>
+            <p> Incorrect = {{incorrectMessage}}</p>
+            <p> Passed = {{passedMessage}}</p>
+          </div>
+
+          <!-- Footer -->
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+
+
     </div>
 
     <!-- Previous button -->
