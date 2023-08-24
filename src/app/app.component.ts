@@ -9,7 +9,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { NGXLogger, NgxLoggerLevel } from 'ngx-logger';
-import { dummyQuiz } from './dummy.data';
+import { dummyQuiz1, dummyQuiz2 } from './dummy.data';
 
 
 /** Main app component. */
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   /** Dev only dummy quiz data.
     * @ignore
   */
-  readonly quiz = dummyQuiz;
+  readonly quizId = dummyQuiz2.uuid;
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).

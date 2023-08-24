@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { QuestionResult } from 'src/app/shared/interfaces/enums';
 import { Quiz } from 'src/app/shared/interfaces/interfaces';
+import { QuizService } from 'src/app/shared/services/quiz-service/quiz.service';
 
 
 /** Component for managing Quizzes.
@@ -25,7 +26,10 @@ export class QuizComponent {
   readonly COMPONENT_NAME = 'QuizComponent';
 
   /** Input item is a Quiz object. */
-  @Input() quiz: Quiz | null = null;
+  @Input() quizId: string | null = null;
+
+  /** Quiz data. */
+  quiz: Quiz | null = null;
 
   /** Page title. */
   pageTitle: string = '';
@@ -58,13 +62,17 @@ export class QuizComponent {
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
+    * @param {QuizService} quizService Quiz service for managing Quizzes.
   */
-  constructor(private logger: NGXLogger) {
+  constructor(
+    private logger: NGXLogger,
+    private quizService: QuizService) {
     this.logger.log(`${this.COMPONENT_NAME}: constructor():`);
   }
 
 
   /** Perform ngOnInit for this component.
+    * - Retrieve required quiz.
     * - Calculate number of questions.
     * - Set page title.
     * - Set page sub-title.
@@ -73,6 +81,13 @@ export class QuizComponent {
   */
   ngOnInit() {
     this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`);
+
+    // Retrieve required quiz.
+    if (this.quizId == null) {
+      this.logger.error(`${this.COMPONENT_NAME}: ngOnInit(): Invalid quizId`);
+      return;
+    }
+    this.quiz = this.quizService.getQuizById(this.quizId);
 
     // Calculate number of questions.
     this.numQuestions = this.quiz?.questions?.length ?? 0;
@@ -114,9 +129,7 @@ export class QuizComponent {
     this.logger.debug(`${this.COMPONENT_NAME}: onResult():`, index, answer);
 
     // Store incoming answer in userAnswers array.
-    this.userAnswers[index] = answer
-      ? QuestionResult.CORRECT
-      : QuestionResult.INCORRECT;
+    this.userAnswers[index] = answer;
 
     // Calculate user stats.
     const numCorrect: number = this.userAnswers.filter(

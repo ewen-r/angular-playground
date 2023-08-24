@@ -17,6 +17,7 @@ import { PageFooterComponent } from './components/page/page-footer/page-footer.c
 import { QuestionComponent } from './components/question/question.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
+import { QuizService } from './shared/services/quiz-service/quiz.service';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
   ],
-  providers: [],
+  providers: [
+    QuizService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
