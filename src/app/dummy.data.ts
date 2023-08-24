@@ -50,7 +50,7 @@ const questionTF02: Question = {
 };
 
 const questionTF03: Question = {
-  uuid: 'questionTF02',
+  uuid: 'questionTF03',
   originatorInfo: originator1,
   topic: 'general knowledge',
   questionType: QuestionType.TRUE_FALSE,
@@ -62,6 +62,38 @@ const questionTF03: Question = {
   answer: {
     match: 'true',
     statement: '.. and also extremely modest.'
+  }
+};
+
+const questionTF04: Question = {
+  uuid: 'questionTF04',
+  originatorInfo: originator1,
+  topic: 'Movies',
+  questionType: QuestionType.TRUE_FALSE,
+  difficulty: Difficulty.EASY,
+  statement: 'True or false.. Mrs. Robinson in The Graduate was played by Anne Bancroft?',
+  multiChoiceOptions: [
+    'true', 'false'
+  ],
+  answer: {
+    match: 'true',
+    statement: ''
+  }
+};
+
+const questionTF05: Question = {
+  uuid: 'questionTF05',
+  originatorInfo: originator1,
+  topic: 'Movies',
+  questionType: QuestionType.TRUE_FALSE,
+  difficulty: Difficulty.EASY,
+  statement: 'True or false.. The name of the skyscraper in Die Hard is \"The Nakatomi Towers\"',
+  multiChoiceOptions: [
+    'true', 'false'
+  ],
+  answer: {
+    match: 'false',
+    statement: 'It was \"Nakatomi Plaza\"'
   }
 };
 
@@ -97,7 +129,6 @@ const questionMultipleChoice02: Question = {
     statement: ''
   }
 };
-
 
 const questionMultipleChoice03: Question = {
   uuid: 'questionMultipleChoice03',
@@ -149,9 +180,43 @@ const questionMultipleChoice05: Question = {
 };
 
 
-export const dummyQuiz: Quiz = {
-  uuid: 'quiz-1234',
-  title: 'General Knowledge Quiz 1234',
+const questionMultipleChoice06: Question = {
+  uuid: 'questionMultipleChoice06',
+  originatorInfo: originator1,
+  topic: 'Movies',
+  questionType: QuestionType.MULTIPLE_CHOICE,
+  difficulty: Difficulty.EASY,
+  statement: 'In The Matrix, does Neo take the blue pill or the red pill?',
+  answer: {
+    match: 'Red',
+    statement: '\"You take the blue pill – the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill – you stay in Wonderland, and I show you how deep the rabbit hole goes.\"'
+  },
+  multiChoiceOptions: [
+    'Red', 'Blue'
+  ]
+};
+
+
+const questionMultipleChoice07: Question = {
+  uuid: 'questionMultipleChoice07',
+  originatorInfo: originator1,
+  topic: 'Movies',
+  questionType: QuestionType.MULTIPLE_CHOICE,
+  difficulty: Difficulty.EASY,
+  statement: 'Who played Juror Number 8 in 12 Angry Men?',
+  answer: {
+    match: 'Henry Fonda',
+    statement: ''
+  },
+  multiChoiceOptions: [
+    'Dustin Hoffman', 'Henry Fonda', 'Robert Redford', 'David Soul'
+  ]
+};
+
+
+export const dummyQuiz1: Quiz = {
+  uuid: '0001',
+  title: 'General Knowledge Quiz',
   originatorInfo: originator1,
   tags: ['general knowledge', 'sport', 'history'],
   difficulty: Difficulty.MEDIUM,
@@ -167,4 +232,26 @@ export const dummyQuiz: Quiz = {
   ],
   questionTypes: [QuestionType.TRUE_FALSE, QuestionType.MULTIPLE_CHOICE]
 };
+
+export const dummyQuiz2: Quiz = {
+  uuid: '0002',
+  title: 'Movie Time Quiz',
+  originatorInfo: originator1,
+  tags: ['Movies'],
+  difficulty: Difficulty.MEDIUM,
+  questions: [
+    questionTF04,
+    questionTF05,
+    questionMultipleChoice05,
+    questionMultipleChoice06,
+    questionMultipleChoice07
+  ],
+  questionTypes: [QuestionType.TRUE_FALSE, QuestionType.MULTIPLE_CHOICE]
+};
+
+
+export const dummyQuizzes: Quiz[] = [
+  dummyQuiz1,
+  dummyQuiz2
+];
 
