@@ -9,7 +9,7 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { QuestionType } from 'src/app/shared/interfaces/enums';
+import { QuestionResult, QuestionType } from 'src/app/shared/interfaces/enums';
 import { Question } from 'src/app/shared/interfaces/interfaces';
 
 
@@ -41,7 +41,7 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question | null = null;
 
   /** Outputs whether user was correct or incorrect. */
-  @Output() result: EventEmitter<boolean> = new EventEmitter();
+  @Output() result: EventEmitter<QuestionResult> = new EventEmitter();
 
   /** The correct answer to this question. */
   correctAnswerMessage: string = '';
@@ -49,13 +49,17 @@ export class QuestionComponent implements OnInit {
   /** Set to true when user submits their answer */
   answerSubmitted: boolean = false;
 
-  /** Whether user's submitted answer is correct.
-    * Initially null until an answer is submitted. */
-  answerSubmittedResult: boolean | null = null;
+  /** Whether user's submitted answer is correct. */
+  answerSubmittedResult: QuestionResult = QuestionResult.PASS;
 
   /** Enum accessor method for QuestionType (Allows enum to be used in template). */
   public get QuestionType(): typeof QuestionType {
     return QuestionType;
+  }
+
+  /** Enum accessor method for QuestionResult (Allows enum to be used in template). */
+  public get QuestionResult(): typeof QuestionResult {
+    return QuestionResult;
   }
 
 
@@ -85,13 +89,16 @@ export class QuestionComponent implements OnInit {
     this.logger.debug(`${this.COMPONENT_NAME}: onSubmit():`, value);
 
     // Determine if answer is correct and emit result to parent.
-    this.answerSubmittedResult = (value === this.question?.answer.match);
+    this.answerSubmittedResult = (value === this.question?.answer.match)
+      ? QuestionResult.CORRECT
+      : QuestionResult.INCORRECT;
+
     this.result.emit(this.answerSubmittedResult);
 
     // If not a true/false question and an incorrect answer was given..
     if ((this.question?.questionType !== QuestionType.TRUE_FALSE) &&
+      (this.answerSubmittedResult !== QuestionResult.CORRECT)) {
       // Construct correctAnswerMessage message
-      !this.answerSubmittedResult) {
       this.correctAnswerMessage = 'The correct answer is ' + String(this.question?.answer.match);
     };
 

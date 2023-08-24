@@ -32,4 +32,9 @@ export enum Difficulty {
   IMPOSSIBLE = 'Impossible'
 };
 
-
+/** String representation of answer. */
+export enum QuestionResult {
+  CORRECT = 'correct',
+  INCORRECT = 'incorrect',
+  PASS = 'passed'
+};

@@ -51,9 +51,11 @@
         <!-- answerDiv -->
         <div class="col text-start answerDiv">
           <div class="align-items-start align-top" *ngIf="answerSubmitted">
-            <p [ngClass]="{'answerCorrect': answerSubmittedResult, 'answerIncorrect': !answerSubmittedResult}">
-              {{ answerSubmittedResult ? "CORRECT 😀" : "INCORRECT 🙃" }} </p>
-
+            <p [ngClass]="{
+                'answerCorrect': (answerSubmittedResult === QuestionResult.PASS),
+                'answerIncorrect': !QuestionResult.INCORRECT
+              }">
+              {{ (answerSubmittedResult === QuestionResult.CORRECT) ? "CORRECT 😀" : "INCORRECT 🙃" }} </p>
             <p> {{ correctAnswerMessage }} </p>
             <p> {{ question?.answer?.statement || '' }} </p>
           </div>

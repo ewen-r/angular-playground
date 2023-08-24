@@ -8,6 +8,7 @@
 
 import { Component, Input } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
+import { QuestionResult } from 'src/app/shared/interfaces/enums';
 import { Quiz } from 'src/app/shared/interfaces/interfaces';
 
 
@@ -33,12 +34,16 @@ export class QuizComponent {
   pageSubtitle = '';
 
   /** User's results for each question. */
-  userAnswers: string[] = [];
+  userAnswers: QuestionResult[] = [];
 
+  /** Number of questions in this quiz. */
   numQuestions: number = 0;
 
+  /** On-screen message. */
   correctMsg: string = '0 (0%)';
+  /** On-screen message. */
   incorrectMessage: string = '0 (0%)';
+  /** On-screen message. */
   passedMessage: string = '0 (0%)';
 
   /** If true, shows summaryMessage about the quiz.. creator, date created etc.. */
@@ -49,6 +54,7 @@ export class QuizComponent {
 
   /** High score message for this quiz. */
   highScoreMessage: string = 'No scores submitted';
+
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
@@ -91,7 +97,7 @@ export class QuizComponent {
 
       // Initialize user answers array.
       this.userAnswers = new Array(this.numQuestions);
-      this.userAnswers.fill('pass');
+      this.userAnswers.fill(QuestionResult.PASS);
       this.passedMessage = `${this.numQuestions} (100%)`;
     }
   }
@@ -99,38 +105,34 @@ export class QuizComponent {
 
   /** Handle result emitted from a question component.
     * - Store incoming answer in userAnswers array.
-    * - Update user stats.
+    * - Calculate user stats.
     * - Update on-screen messages.
-    * @param {boolean} isCorrectAnswer True if user answered question correctly.
+    * @param {QuestionResult} answer True if user answered question correctly.
     * @param {number} index Index of question.
   */
-  onResult(isCorrectAnswer: boolean, index: number) {
-    this.logger.debug(`${this.COMPONENT_NAME}: onResult():`, index, isCorrectAnswer);
+  onResult(answer: QuestionResult, index: number) {
+    this.logger.debug(`${this.COMPONENT_NAME}: onResult():`, index, answer);
 
     // Store incoming answer in userAnswers array.
-    this.userAnswers[index] = isCorrectAnswer ? 'correct' : 'incorrect';
+    this.userAnswers[index] = answer
+      ? QuestionResult.CORRECT
+      : QuestionResult.INCORRECT;
 
-    // Update user stats.
+    // Calculate user stats.
     const numCorrect: number = this.userAnswers.filter(
-      a => a === 'correct').length;
+      a => a === QuestionResult.CORRECT).length;
     const numIncorrect: number = this.userAnswers.filter(
-      a => a === 'incorrect').length;
+      a => a === QuestionResult.INCORRECT).length;
     const numPassed: number = this.userAnswers.filter(
-      a => a === 'pass').length;
+      a => a === QuestionResult.PASS).length;
 
     // Update on-screen messages.
     this.correctMsg = `${numCorrect} (
-      ${String(
-      Math.floor(100 * numCorrect / (this.numQuestions)))
-      }%)`;
+      ${Math.floor(100 * numCorrect / (this.numQuestions))}%)`;
     this.incorrectMessage = `${numIncorrect} (
-      ${String(
-      Math.floor(100 * numIncorrect / (this.numQuestions)))
-      }%)`;
+      ${Math.floor(100 * numIncorrect / (this.numQuestions))}%)`;
     this.passedMessage = `${numPassed} (
-      ${String(
-      Math.floor(100 * numPassed / (this.numQuestions)))
-      }%)`;
+      ${Math.floor(100 * numPassed / (this.numQuestions))}%)`;
 
   }
 
