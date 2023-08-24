@@ -6,7 +6,8 @@
     in whole or in part, without the express prior written permission.
 */
 
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { QuestionResult } from 'src/app/shared/interfaces/enums';
 import { Quiz } from 'src/app/shared/interfaces/interfaces';
@@ -25,9 +26,6 @@ export class QuizComponent {
   /** Name of this component. */
   readonly COMPONENT_NAME = 'QuizComponent';
 
-  /** Input item is a Quiz object. */
-  @Input() quizId: string | null = null;
-
   /** Quiz data. */
   quiz: Quiz | null = null;
 
@@ -38,10 +36,10 @@ export class QuizComponent {
   pageSubtitle = '';
 
   /** User's results for each question. */
-  userAnswers: QuestionResult[] = [];
+  private userAnswers: QuestionResult[] = [];
 
   /** Number of questions in this quiz. */
-  numQuestions: number = 0;
+  private numQuestions: number = 0;
 
   /** On-screen message. */
   correctMsg: string = '0 (0%)';
@@ -49,9 +47,6 @@ export class QuizComponent {
   incorrectMessage: string = '0 (0%)';
   /** On-screen message. */
   passedMessage: string = '0 (0%)';
-
-  /** If true, shows summaryMessage about the quiz.. creator, date created etc.. */
-  showMetadata = true;
 
   /** Summary of this quiz. */
   summaryMessage = '';
@@ -63,15 +58,18 @@ export class QuizComponent {
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).
     * @param {QuizService} quizService Quiz service for managing Quizzes.
+    * @param {ActivatedRoute} route Route service used to parse page route.
   */
   constructor(
     private logger: NGXLogger,
-    private quizService: QuizService) {
+    private quizService: QuizService,
+    private route: ActivatedRoute) {
     this.logger.log(`${this.COMPONENT_NAME}: constructor():`);
   }
 
 
   /** Perform ngOnInit for this component.
+    * - Get uuid of quiz from route.
     * - Retrieve required quiz.
     * - Calculate number of questions.
     * - Set page title.
@@ -82,12 +80,15 @@ export class QuizComponent {
   ngOnInit() {
     this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`);
 
+    // Get uuid of quiz from route.
+    const quizId: string | null = this.route.snapshot.paramMap.get('id');
+
     // Retrieve required quiz.
-    if (this.quizId == null) {
+    if (quizId == null) {
       this.logger.error(`${this.COMPONENT_NAME}: ngOnInit(): Invalid quizId`);
       return;
     }
-    this.quiz = this.quizService.getQuizById(this.quizId);
+    this.quiz = this.quizService.getQuizById(quizId);
 
     // Calculate number of questions.
     this.numQuestions = this.quiz?.questions?.length ?? 0;
