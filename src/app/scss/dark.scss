@@ -6,10 +6,13 @@
     in whole or in part, without the express prior written permission.
 */
 
-// Specific colour scheme tweaks for users with dark-mode enabled.
+// NOTE: This file is for tweaks when in dark-mode only.
 
-$brandPageBackground: $brandMidGrey;
+@import './brand.scss';
 
+
+$backgroundColor: $brandMidGrey;
+$fontColor: $brandLightGrey;
 
 body,
 .card,
@@ -21,8 +24,8 @@ body,
 .form-check-input,
 .navbar-brand,
 .dropdown-item {
-  background-color: $brandPageBackground;
-  color: $brandLightGrey;
+  background-color: $backgroundColor;
+  color: $fontColor;
 }
 
 .card-header,
@@ -31,9 +34,9 @@ body,
 }
 
 .btn {
-  border: white solid 2px !important;
+  border: $brandWhite solid 2px !important;
 }
 
 a {
-  color: $brandLightGrey;
+  color: $fontColor;
 }
