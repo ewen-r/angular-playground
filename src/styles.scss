@@ -31,3 +31,20 @@ a.noDecoration {
   background-color: $brandPageBackground;
   font-size: smaller;
 }
+
+.gradientTop {
+  background-image: linear-gradient(to top, $brandAmber, $brandOrange);
+}
+
+.gradientBottom {
+  background-image: linear-gradient(to bottom, $brandAmber, $brandOrange);
+}
+
+.gradientRight {
+  background-image: linear-gradient(to right, $brandAmber, $brandOrange);
+}
+
+.gradientLeft {
+  background-image: linear-gradient(to left, $brandAmber, $brandOrange);
+}
+
