@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home/home.component';
-import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found.component';
 
 /** Routes. */
 const routes: Routes = [
