@@ -6,8 +6,13 @@
     in whole or in part, without the express prior written permission.
 */
 
-/** Primary design colors */
+/** Primary design colors
+  *  NOTE: Any try not to use brandPageBackground outside of styles.css and even so, please
+  *   try to remember to add a corresponding entry in dark.scss for users in dark-mode.
+*/
 $brandPageBackground: #FAFAFA;
+
+
 
 $standardTextureImage: url("https://www.transparenttextures.com/patterns/rough-cloth-light.png");
 
@@ -61,4 +66,4 @@ $standardMargin: 5px;
 /** Misc. */
 $standardBoxShadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 
-$standardGradient:  linear-gradient($brandOrange, $brandAmber);
+$standardGradient: linear-gradient($brandOrange, $brandAmber);

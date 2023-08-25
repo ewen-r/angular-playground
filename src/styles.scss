@@ -28,7 +28,6 @@ a.noDecoration {
 }
 
 .dropdown-menu {
-  background-color: $brandPageBackground;
   font-size: smaller;
 }
 
@@ -46,5 +45,33 @@ a.noDecoration {
 
 .gradientLeft {
   background-image: linear-gradient(to left, $brandAmber, $brandOrange);
+}
+
+.card-header,
+.card-footer {
+  background-image: $standardTextureImage;
+  box-shadow: $standardBoxShadow;
+}
+
+
+body,
+.card,
+.card-body,
+.card-footer,
+.card-header,
+.dropdown-menu,
+.list-group-item,
+.form-check-input {
+  background-color: $brandPageBackground;
+  font-family: $standardFontFamily;
+}
+
+
+// ------------------------------------------------------------------------------
+// Load overrides for users with dark theme.
+// This must go last so it overrides anything from above.
+
+@media (prefers-color-scheme: dark) {
+  @import './app/scss/dark.scss';
 }
 

@@ -9,14 +9,3 @@
 @import './scss/brand.scss';
 
 
-.card-header,
-.card-footer {
-  background-image: $standardTextureImage;
-  font-family: $standardFontFamily;
-  box-shadow: $standardBoxShadow;
-}
-
-.card-body {
-  background-color: $brandPageBackground;
-}
-
