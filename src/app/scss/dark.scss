@@ -1,4 +1,3 @@
-
 /*
   © Copyright 2023-2023 E Reynolds, Inc. All rights reserved.
 
@@ -19,8 +18,11 @@ body,
 .card-header,
 .dropdown-menu,
 .list-group-item,
-.form-check-input {
+.form-check-input,
+.navbar-brand,
+.dropdown-item {
   background-color: $brandPageBackground;
+  color: $brandLightGrey;
 }
 
 .card-header,
@@ -33,5 +35,5 @@ body,
 }
 
 a {
-  color: darkblue;
+  color: $brandLightGrey;
 }
