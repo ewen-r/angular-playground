@@ -19,12 +19,15 @@ import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home/home.component';
+import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found/page-not-found.component';
 
 /** Routes. */
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'quiz', component: HomeComponent },
-  { path: 'quiz/:id', component: QuizComponent }
+  { path: 'quiz/:id', component: QuizComponent },
+  { path: '**', component: PageNotFoundComponent }
+
 ];
 
 
@@ -35,7 +38,8 @@ const routes: Routes = [
     PageFooterComponent,
     QuestionComponent,
     QuizComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
