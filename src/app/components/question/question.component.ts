@@ -3,7 +3,7 @@
 
   This program is confidential and proprietary to E Reynolds, and
     may not be copied, reproduced, modified, disclosed to others, published or used,
-    in whole or in part, without the express prior written permission.
+    in whole or in part, without express prior written permission.
 */
 
 
