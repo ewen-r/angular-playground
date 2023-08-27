@@ -16,14 +16,6 @@ export enum QuestionType {
 };
 
 
-/** Media type (image, video, audio). */
-export enum MediaType {
-  IMAGE = 'Image',
-  VIDEO = 'Video',
-  AUDIO = 'Audio'
-};
-
-
 /** Difficulty of the quiz/question. */
 export enum Difficulty {
   EASY = 'Easy',
