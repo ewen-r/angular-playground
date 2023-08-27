@@ -154,7 +154,7 @@ const questionMultipleChoice03: Question = {
   topic: 'History',
   questionType: QuestionType.MULTIPLE_CHOICE,
   difficulty: Difficulty.MEDIUM,
-  statement: 'Which year marked the beginning of the Frech revolution?',
+  statement: 'Which year marked the beginning of the French revolution?',
   multiChoiceOptions: [
     '1689', '1789', '1889'
   ],
