@@ -6,6 +6,8 @@
     in whole or in part, without the express prior written permission.
 */
 
+/** Production environment settings.
+*/
 export const environment = {
   version: 'production',
   production: true,

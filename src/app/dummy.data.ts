@@ -12,12 +12,16 @@ import { Quiz, Question, OriginatorInfo } from './shared/interfaces/interfaces';
 
 /* spellchecker: disable */
 
+/** Dev use only
+  * @ignore */
 const originator1: OriginatorInfo = {
   username: 'Ewen Reynolds',
   createDate: '22-Aug-2023',
   modifyDate: ''
 };
 
+/** Dev use only
+  * @ignore */
 const questionTF01: Question = {
   uuid: 'questionTF01',
   originatorInfo: originator1,
@@ -34,6 +38,8 @@ const questionTF01: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionTF02: Question = {
   uuid: 'questionTF02',
   originatorInfo: originator1,
@@ -50,6 +56,8 @@ const questionTF02: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionTF03: Question = {
   uuid: 'questionTF03',
   originatorInfo: originator1,
@@ -66,6 +74,8 @@ const questionTF03: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionTF04: Question = {
   uuid: 'questionTF04',
   originatorInfo: originator1,
@@ -82,6 +92,8 @@ const questionTF04: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionTF05: Question = {
   uuid: 'questionTF05',
   originatorInfo: originator1,
@@ -98,7 +110,8 @@ const questionTF05: Question = {
   }
 };
 
-
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice01: Question = {
   uuid: 'questionMultipleChoice01',
   originatorInfo: originator1,
@@ -115,6 +128,8 @@ const questionMultipleChoice01: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice02: Question = {
   uuid: 'questionMultipleChoice02',
   originatorInfo: originator1,
@@ -131,6 +146,8 @@ const questionMultipleChoice02: Question = {
   }
 };
 
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice03: Question = {
   uuid: 'questionMultipleChoice03',
   originatorInfo: originator1,
@@ -147,7 +164,8 @@ const questionMultipleChoice03: Question = {
   }
 };
 
-
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice04: Question = {
   uuid: 'questionMultipleChoice04',
   originatorInfo: originator1,
@@ -164,6 +182,8 @@ const questionMultipleChoice04: Question = {
   ]
 };
 
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice05: Question = {
   uuid: 'questionMultipleChoice05',
   originatorInfo: originator1,
@@ -180,7 +200,8 @@ const questionMultipleChoice05: Question = {
   ]
 };
 
-
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice06: Question = {
   uuid: 'questionMultipleChoice06',
   originatorInfo: originator1,
@@ -197,7 +218,8 @@ const questionMultipleChoice06: Question = {
   ]
 };
 
-
+/** Dev use only
+  * @ignore */
 const questionMultipleChoice07: Question = {
   uuid: 'questionMultipleChoice07',
   originatorInfo: originator1,
@@ -214,8 +236,9 @@ const questionMultipleChoice07: Question = {
   ]
 };
 
-
-export const dummyQuiz1: Quiz = {
+/** Dev use only
+  * @ignore */
+const dummyQuiz1: Quiz = {
   uuid: '0001',
   title: 'General Knowledge Quiz',
   originatorInfo: originator1,
@@ -234,7 +257,9 @@ export const dummyQuiz1: Quiz = {
   questionTypes: [QuestionType.TRUE_FALSE, QuestionType.MULTIPLE_CHOICE]
 };
 
-export const dummyQuiz2: Quiz = {
+/** Dev use only
+  * @ignore */
+const dummyQuiz2: Quiz = {
   uuid: '0002',
   title: 'Movie Time Quiz',
   originatorInfo: originator1,
@@ -251,6 +276,8 @@ export const dummyQuiz2: Quiz = {
 };
 
 
+/** Dev use only. Dummy quiz data.
+  * @ignore */
 export const dummyQuizzes: Quiz[] = [
   dummyQuiz1,
   dummyQuiz2
