@@ -17,20 +17,12 @@ import { QuestionComponent } from './components/question/question.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
-import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home/home.component';
 import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found.component';
 
-/** Routes. */
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'quiz', component: HomeComponent },
-  { path: 'quiz/:id', component: QuizComponent },
-  { path: '**', component: PageNotFoundComponent }
 
-];
-
-
+/** Main application module.
+*/
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +37,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL }),
-    RouterModule.forRoot(routes)
+    LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
   ],
   providers: [
     QuizService
