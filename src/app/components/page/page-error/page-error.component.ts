@@ -12,13 +12,13 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 
-/** Component to display the page not found banner. */
+/** Component to display an error page with a custom error and a "go back" link. */
 @Component({
   selector: 'app-page-not-found',
-  templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+  templateUrl: './page-error.component.html',
+  styleUrls: ['./page-error.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageErrorComponent implements OnInit {
 
   /** Name of this component. */
   readonly COMPONENT_NAME = 'PageNotFoundComponent';
@@ -27,7 +27,7 @@ export class PageNotFoundComponent implements OnInit {
   readonly pageTitle: string = 'Oops!';
 
   /** Page sub-title. */
-  readonly pageSubtitle: string = 'Page not found.';
+  pageSubtitle: string = 'Page not found.';
 
 
   /** Class constructor.
@@ -48,6 +48,7 @@ export class PageNotFoundComponent implements OnInit {
     * - Output the offending route to debug.
   */
   ngOnInit() {
+    this.pageSubtitle = this.route.snapshot.data['message'] ?? 'Unknown error';
     this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`, this.route.snapshot);
   }
 

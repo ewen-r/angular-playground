@@ -9,7 +9,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home/home.component';
-import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found.component';
+import { PageErrorComponent } from './components/page/page-error/page-error.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 
 
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'quiz', component: HomeComponent },
   { path: 'quiz/:id', component: QuizComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageErrorComponent, data: { message: 'Page not found!' } }
 ];
 
 

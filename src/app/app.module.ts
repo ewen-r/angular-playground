@@ -18,7 +18,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
 import { HomeComponent } from './components/home/home/home.component';
-import { PageNotFoundComponent } from './components/page/page-not-found/page-not-found.component';
+import { PageErrorComponent } from './components/page/page-error/page-error.component';
 
 
 /** Main application module.
@@ -31,7 +31,7 @@ import { PageNotFoundComponent } from './components/page/page-not-found/page-not
     QuestionComponent,
     QuizComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,
