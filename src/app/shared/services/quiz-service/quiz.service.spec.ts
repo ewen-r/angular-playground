@@ -9,13 +9,20 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { QuizService } from '../quiz.service';
+import { QuizService } from '../quiz-service/quiz.service';
+import { NGXLogger } from 'ngx-logger';
+import { NGXLoggerMock } from 'src/app/mock/NGXLogger.mock.service';
 
 describe('QuizService', () => {
   let service: QuizService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [{
+        provide: NGXLogger,
+        useClass: NGXLoggerMock
+      }]
+    });
     service = TestBed.inject(QuizService);
   });
 
