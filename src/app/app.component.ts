@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   /** Name of this component. */
   readonly COMPONENT_NAME = 'AppComponent';
 
+  readonly title: string = 'angular-playground';
 
   /** Class constructor.
     * @param {NGXLogger} logger Logger service (https://www.npmjs.com/package/ngx-logger).

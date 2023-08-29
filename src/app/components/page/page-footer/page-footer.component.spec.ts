@@ -10,6 +10,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageFooterComponent } from './page-footer.component';
+import { NGXLogger } from 'ngx-logger';
+import { NGXLoggerMock } from 'src/app/mock/NGXLogger.mock.service';
 
 describe('PageFooterComponent', () => {
   let component: PageFooterComponent;
@@ -17,7 +19,13 @@ describe('PageFooterComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageFooterComponent]
+      declarations: [PageFooterComponent],
+      providers: [
+        {
+          provide: NGXLogger,
+          useClass: NGXLoggerMock
+        }
+      ]
     });
     fixture = TestBed.createComponent(PageFooterComponent);
     component = fixture.componentInstance;

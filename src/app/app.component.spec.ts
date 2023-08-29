@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /*
   © Copyright 2023-2023 E Reynolds, Inc. All rights reserved.
 
@@ -9,11 +10,21 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NGXLoggerMock } from './mock/NGXLogger.mock.service';
+import { NGXLogger } from 'ngx-logger';
+import { PageHeaderComponent } from './components/page/page-header/page-header.component';
+import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [AppComponent, PageHeaderComponent, PageFooterComponent],
+    providers: [
+      {
+        provide: NGXLogger,
+        useClass: NGXLoggerMock
+      }
+    ]
   }));
 
   it('should create the app', () => {
@@ -22,16 +33,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-playground'`, () => {
+  it('should have as title \'angular-playground\'', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('angular-playground');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-playground app is running!');
-  });
 });

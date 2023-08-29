@@ -10,6 +10,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageHeaderComponent } from './page-header.component';
+import { NGXLogger } from 'ngx-logger';
+import { NGXLoggerMock } from 'src/app/mock/NGXLogger.mock.service';
 
 describe('PageHeaderComponent', () => {
   let component: PageHeaderComponent;
@@ -17,7 +19,13 @@ describe('PageHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageHeaderComponent]
+      declarations: [PageHeaderComponent],
+      providers: [
+        {
+          provide: NGXLogger,
+          useClass: NGXLoggerMock
+        }
+      ]
     });
     fixture = TestBed.createComponent(PageHeaderComponent);
     component = fixture.componentInstance;

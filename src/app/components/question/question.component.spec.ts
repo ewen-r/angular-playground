@@ -10,6 +10,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuestionComponent } from './question.component';
+import { NGXLogger } from 'ngx-logger';
+import { NGXLoggerMock } from 'src/app/mock/NGXLogger.mock.service';
+import { FormsModule } from '@angular/forms';
 
 describe('QuestionComponent', () => {
   let component: QuestionComponent;
@@ -17,7 +20,14 @@ describe('QuestionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QuestionComponent]
+      declarations: [QuestionComponent],
+      providers: [
+        {
+          provide: NGXLogger,
+          useClass: NGXLoggerMock
+        }
+      ],
+      imports: [FormsModule]
     });
     fixture = TestBed.createComponent(QuestionComponent);
     component = fixture.componentInstance;
