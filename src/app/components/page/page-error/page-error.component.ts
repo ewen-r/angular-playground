@@ -21,7 +21,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PageErrorComponent implements OnInit {
 
   /** Name of this component. */
-  readonly COMPONENT_NAME = 'PageNotFoundComponent';
+  readonly COMPONENT_NAME = 'PageErrorComponent';
 
   /** Page title. */
   readonly pageTitle: string = 'Oops!';
@@ -48,6 +48,7 @@ export class PageErrorComponent implements OnInit {
     * - Output the offending route to debug.
   */
   ngOnInit() {
+    // eslint-disable-next-line dot-notation
     this.pageSubtitle = this.route.snapshot.data['message'] ?? 'Unknown error';
     this.logger.log(`${this.COMPONENT_NAME}: ngOnInit():`, this.route.snapshot);
   }
