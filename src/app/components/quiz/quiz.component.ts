@@ -88,7 +88,33 @@ export class QuizComponent {
       this.logger.error(`${this.COMPONENT_NAME}: ngOnInit(): Invalid quizId`);
       return;
     }
-    this.quiz = this.quizService.getQuizById(quizId);
+
+    this.quizService.getQuizById(quizId).subscribe(
+      {
+        next: (v) => this.subscribeHandler(v),
+        error: (e) => this.logger.error(`${this.COMPONENT_NAME}: ngOnInit(): Error when retrieving quiz`, e)
+      }
+    );
+  }
+
+
+  /** Handle response from quizService.getQuizById()
+    * - Calculate number of questions.
+    * - Set page title.
+    * - Set page sub-title.
+    * - Create summaryMessage.
+    * - Initialize user answers array.
+    * @param {Quiz | null} data data from callback.
+  */
+  subscribeHandler(data: Quiz | null) {
+    this.logger.log(`${this.COMPONENT_NAME}: subscribeHandler():`);
+
+    if (!data) {
+      this.logger.error(`${this.COMPONENT_NAME}: subscribeHandler(): Invalid quiz`);
+      return;
+    }
+
+    this.quiz = data;
 
     // Calculate number of questions.
     this.numQuestions = this.quiz?.questions?.length ?? 0;
