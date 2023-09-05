@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { QuizService } from './shared/services/quiz-service/quiz.service';
 import { HomeComponent } from './components/home/home/home.component';
 import { PageErrorComponent } from './components/page/page-error/page-error.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 /** Main application module.
@@ -37,6 +38,7 @@ import { PageErrorComponent } from './components/page/page-error/page-error.comp
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     LoggerModule.forRoot({ level: NgxLoggerLevel.FATAL })
   ],
   providers: [
