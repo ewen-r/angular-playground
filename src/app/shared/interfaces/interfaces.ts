@@ -48,7 +48,7 @@ export interface Question {
   /** The answer to this question. */
   answer: Answer;
   /** Any multiple choice options. */
-  multiChoiceOptions?: string[];
+  multiChoiceOptions: string[];
 };
 
 
