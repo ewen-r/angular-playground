@@ -1,10 +1,39 @@
-# AngularPlayground
-
+# ANGULAR-PLAYGROUND
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
-## Development server
+# REQUIRED
+- [git](https://git-scm.com/install/)
+- [node](https://nodejs.org/en)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# CHECK-OUT THE REPO
+
+```bash
+mkdir angular-playground
+cd angular-playground && git clone https://github.com/ewen-r/angular-playground.git .
+```
+
+# INIT
+
+```bash
+cd angular-playground
+npm i
+```
+
+# RUN DEVELOPMENT SERVER
+
+```bash
+cd angular-playground
+npm start
+```
+
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+
+# QUESTION SERVER
+The application launched in the browser here will try to load questions from the Question Server detailed in
+ `src/app/shared/services/quiz-service/quiz.service.ts`
+
+Quiz server code is not included in this repo but can be found [here](https://github.com/ewen-r/api-server)
 
 ## Code scaffolding
 
